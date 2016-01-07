@@ -1,0 +1,13 @@
+{
+  "name": "nush",
+  "description": "NuSh page",
+  "version": "0.0.1",
+  "homepage": "https://github.com/FedeG/nu-sh",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.4.3",
+    "angular-loader": "~1.4.0",
+    "bootstrap": "~3.3.5",
+    "fontawesome": "~4.1.0"
+  }
+}
