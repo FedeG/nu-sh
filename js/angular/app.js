@@ -1,1 +1,1 @@
-var app = angular.module('NuShApp', []);
+var app = angular.module('NuShApp', ['angular-flexslider']);
