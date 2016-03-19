@@ -1,0 +1,1 @@
+app.constant('API_URL', 'http://10.18.12.44:8080/v1/');
