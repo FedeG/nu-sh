@@ -16,4 +16,14 @@ $(document).ready(function() {
   $('#agregar').mouseleave(function () {
     $('#agregar').html(agregar_html);
   });
+
+  var encargar_html;
+  $('#encargar').mouseenter(function () {
+    encargar_html = $('#encargar').html();
+    $('#encargar').html('Encargar');
+  });
+  $('#encargar').mouseleave(function () {
+    $('#encargar').html(encargar_html);
+  });
+  
 });

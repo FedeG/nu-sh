@@ -19,7 +19,9 @@ app.directive('modal', function () {
       scope.title = attrs.title;
 
       scope.$watch(attrs.visible, function(value){
-        $(element).modal((value) ? 'show':'hide');
+        $( document ).ready(function() {
+          $(element).modal((value) ? 'show':'hide');
+        });
       });
 
       $(element).on('shown.bs.modal', function(){

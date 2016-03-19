@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="NuShApp">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Anu-sh</title>
+
+    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/static/css/freelancer.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/bower_components/flexslider/flexslider.css">
+
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" href="/bower_components/fontawesome/css/font-awesome.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Bangers">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/static/css/buttons.css">
+</head>
+
+<body id="page-top" class="index" ng-controller="nuShController">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-fixed-top no-print">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/#page-top" style="font-family: Bangers; font-weight: 500;">nu-sh</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="hidden">
+                    <a href="/#page-top"></a>
+                </li>
+                <li class="page-scroll">
+                    <a href="/#ambo">ambos</a>
+                </li>
+                <li class="page-scroll">
+                    <a href="/#chaqueta">Chaquetas</a>
+                </li>
+                <li class="page-scroll">
+                    <a href="/#pantalon">Pantalones</a>
+                </li>
+                <li class="page-scroll">
+                    <a href="/#about">Nosotros</a>
+                </li>
+                <li class="page-scroll">
+                    <a href="/#contact">Contacto</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+
+<div class="container text-center no-print" style="padding-top: 120px; padding-bottom: 30px">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+                <h2>Encargo de {{ producto.name }}</h2>
+                <h5>Este encargo fue efectuado exitosamente</h5>
+                <hr class="star-primary">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <flex-slider slide="imagen in producto.imagen track by $index" animation="slide" control-nav="thumbnails">
+                                <li data-thumb="{{imagen}}" class="img-responsive" style="width: 864px;">
+                                    <img ng-src="{{imagen}}"  class="img-responsive">
+                                </li>
+                            </flex-slider>
+                        </div>
+                        <div class="col-md-offset-1 col-md-6">
+                            <h5>Número de encargo: {{encargo.number}}</h5>
+                            <h5>Nombre Completo: </h5>{{encargo.full_name}}
+                            <h5>Mail: </h5>{{encargo.email}}<br>
+                            <h5>Telefono: </h5>{{encargo.telephone}}<br>
+                            <h5>Talle: </h5>{{encargo.talle}}<br>
+                            <br>
+                            <button ng-click="printIt()" type="button" class="action-button shadow animate blue btn"><i class="fa fa-print"></i> Imprimir</button>
+                        </div>
+                    </div>
+                </div>
+            <br>
+            <a href="/#{{ producto.tipo }}" type="button" class="btn btn-default"><i class="fa fa-chevron-left"></i> Volver</a>
+            </div>
+        </div>
+
+    <modal title="Encargo Exitoso" visible="showModal">
+        <h4>Su número de encargo es: {{encargo.number}}</h4>
+        <br>
+        A la brevedad sera contactado por un vendedor para confirmar la entrega, ante cualquier duda puede enviar un mail a <a href="mailto:ventas@nush.com.ar">ventas@nush.com.ar</a>
+    </modal>
+
+</div>
+
+<div id="printArea" class="print" style="display: none">
+    <div class="text-center">
+        <h4>Su número de encargo es: {{encargo.number}}</h4>
+        <hr class="star-primary"><br>
+        <h5>Nombre Completo: {{encargo.full_name}}</h5><br>
+        <h5>Mail: {{encargo.email}}</h5><br>
+        <h5>Telefono: {{encargo.telephone}}</h5><br>
+        <h5>Talle: {{encargo.talle}}</h5><br>
+        <br><br><br><br><br><br>
+        <h6>Ante cualquier duda puede enviar un mail a ventas@nush.com.ar</h6>
+    </div>
+</div>
+
+    <!-- jQuery -->
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Angular and App -->
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/static/js/angular/encargo/app.js"></script>
+    <script src="/static/js/angular/directives/modal.js"></script>
+    <script src="/static/js/angular/encargo/constant.js"></script>
+    <script src="/static/js/angular/encargo/factory.js"></script>
+    <script src="/static/js/angular/encargo/controller.js"></script>
+    <script src="/static/js/angular/encargo/service.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="/static/js/classie.js"></script>
+    <script src="/static/js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="/static/js/jqBootstrapValidation.js"></script>
+    <script src="/static/js/contact_me.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/static/js/freelancer.js"></script>
+    <script src="/bower_components/flexslider/jquery.flexslider-min.js"></script>
+    <script src="/bower_components/angular-flexslider/angular-flexslider.js"></script>
+
+    <!-- Custom JavaScript files -->
+
+</body>
+
+</html>
