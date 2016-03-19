@@ -10,7 +10,7 @@
     "http-server": "^0.6.1"
   },
   "scripts": {
-    "prestart": "bower install --allow-root; npm install",
+    "prestart": "bower install; npm install",
     "start": "node index.js"
   },
   "dependencies": {
