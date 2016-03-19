@@ -1,0 +1,63 @@
+.animate
+{
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s;
+}
+
+.action-button
+{
+    position: relative;
+    padding: 9px 30px;
+    margin: 10px 10px 10px 10px;
+    float: left;
+    border-radius: 10px;
+    font-family: 'Pacifico', cursive;
+    font-size: 21px;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.action-button:hover
+{
+    color: #FFF;
+    background-color: #FFA100;
+    border-bottom: 5px solid #C47A00;
+    text-shadow: 0px -2px #C47A00;
+}
+
+.blue
+{
+    background-color: #18BC9C;
+    border-bottom: 5px solid #007D65;
+    text-shadow: 0px -2px #007D65;
+    color: #FFF;
+}
+
+.action-button:active
+{
+    transform: translate(0px,5px);
+    -webkit-transform: translate(0px,5px);
+    border-bottom: 1px solid;
+    color: #FFF;
+}
+
+.orange
+{
+    color: #FFF;
+    background-color: #FFA100;
+    border-bottom: 5px solid #C47A00;
+    text-shadow: 0px -2px #C47A00;
+}
+
+@media print
+{
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+
+    .print, .print *
+    {
+        display: block !important;
+    }
+}
