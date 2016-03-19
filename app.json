@@ -1,0 +1,19 @@
+{
+  "name": "Nu-sh Page",
+  "description": "Nu-sh page",
+  "keywords": [
+    "productivity",
+    "HTML5"
+  ],
+  "website": "http://nush.com.ar/",
+  "repository": "https://github.com/FedeG/nu-sh",
+  "logo": "https://raw.githubusercontent.com/FedeG/nu-sh/master/img/shhh.png",
+  "success_url": "/",
+  "scripts": {
+    "start": "npm start"
+  },
+  "image": "heroku/nodejs",
+  "addons": [
+    "mongolab:shared-single-small"
+  ]
+}
