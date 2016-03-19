@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var baucis = require('baucis');
 
 // Connect to the Mongo instance
-mongoose.connect('mongodb://localhost/nush');
+mongoose.connect('mongodb://heroku_5j83hqf6:4n9llqjh1pda07d3g23v6suqqj@ds013738.mlab.com:13738/heroku_5j83hqf6');
 
 // Create a mongoose schema.
 var Producto = new mongoose.Schema({
