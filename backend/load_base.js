@@ -1,13 +1,13 @@
 var mongoose = require('./model.js').mongoose;
 
-function deleteCollection(model){
+function load(model, data){
   mongoose.model(model).remove(function (error) {
     if (error) throw error;
-  });
-}
-function load(model, data){
-  mongoose.model(model).create(data, function (error) {
-    if (error) throw error;
+    if (data) {
+      mongoose.model(model).create(data, function (error) {
+        if (error) throw error;
+      });
+    }
   });
 }
 
@@ -51,13 +51,8 @@ var talles = [
   {'size': 'xxl', 'busto': '35 cm', 'alto': '25 cm'}
 ];
 
-deleteCollection('pedido');
-deleteCollection('producto');
-deleteCollection('contacto');
-deleteCollection('encargo');
-deleteCollection('talle');
-deleteCollection('usuario');
-deleteCollection('compra');
+load('usuario');
+load('compra');
 load('contacto', contactos);
 load('pedido', [{name: 'nush'}]);
 load('producto', ambos.concat(chaquetas).concat(pantalones));
