@@ -1,9 +1,15 @@
+require('dotenv').config();
 var bcrypt   = require('bcrypt-nodejs');
 var mongoose = require('mongoose');
 var baucis = require('baucis');
 
 // Connect to the Mongo instance
-mongoose.connect('mongodb://heroku_5j83hqf6:4n9llqjh1pda07d3g23v6suqqj@ds013738.mlab.com:13738/heroku_5j83hqf6');
+if (!process.env.MONGOLAB_URI)
+  if (process.env.MONGO_USER)
+    process.env.MONGOLAB_URI = 'mongodb://' + process.env.MONGO_USER + ':' + process.env.MONGO_PASS + '@' + process.env.MONGO_HOST + ':' + process.env.MONGO_PORT + '/' + process.env.MONGO_DB;
+  else
+    process.env.MONGOLAB_URI = 'mongodb://' + process.env.MONGO_HOST + ':' + process.env.MONGO_PORT + '/' + process.env.MONGO_DB;
+mongoose.connect(process.env.MONGOLAB_URI);
 
 // Create a mongoose schema.
 var Producto = new mongoose.Schema({

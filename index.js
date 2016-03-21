@@ -1,3 +1,4 @@
+require('dotenv').config();
 var mongoose = require('mongoose');
 var multer = require('multer');
 var path = require("path");
