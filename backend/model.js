@@ -59,8 +59,11 @@ var Compra = new mongoose.Schema({
 
 var Talle = new mongoose.Schema({
   size: String,
+  hombros: String,
   busto: String,
-  alto: String
+  largo_c: String,
+  cadera: String,
+  largo_p: String
 });
 
 var Contacto = new mongoose.Schema({
