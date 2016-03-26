@@ -16,6 +16,7 @@ app.use(cors());
 app.use('/api', api());
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
 app.use('/node_modules', express.static(__dirname + '/node_modules'));
+app.use('/mail', express.static(__dirname + '/static/mail'));
 app.use('/static', express.static(__dirname + '/static'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
