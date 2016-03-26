@@ -12,6 +12,7 @@ function reduce(){
         (image) => {
           fs.exists(image.target, (exists) => {
             if (!exists) {
+              console.log('This file not exists: ', image.target);
               var source = tinify.fromFile(image.source);
               source.toFile(image.target);
             } else console.log('This file exists: ', image.target);
@@ -25,4 +26,4 @@ reduce();
 setInterval(() => {
   console.log('Reduce now', new Date());
   reduce()
-}, 15*60*1000);
+}, 10*60*1000);
