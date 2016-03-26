@@ -13,6 +13,7 @@ mongoose.connect(process.env.MONGOLAB_URI);
 
 // Create a mongoose schema.
 var Producto = new mongoose.Schema({
+  model: String,
   name: String,
   size: {type: String, default: 'col-md-3'},
   codigo: String,
