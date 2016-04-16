@@ -9,8 +9,7 @@ var load = require('./backend/load_base.js');
 var app = require("./authentication/server.js");
 var api = require('./backend/model.js').baucis;
 
-if (process.env.OPENSHIFT_NODEJS_PORT)
-  app.set('port', (process.env.OPENSHIFT_NODEJS_PORT));
+if (process.env.OPENSHIFT_NODEJS_PORT) app.set('port', process.env.OPENSHIFT_NODEJS_PORT);
 else app.set('port', (process.env.PORT || 5000));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
