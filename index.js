@@ -78,6 +78,11 @@ app.post('/consulta', upload2.array(), function (req, res, next) {
       .catch((err) => res.send('error'))
 });
 
-app.listen(app.get('port'), function() {
-  console.log("Node app is running at localhost:" + app.get('port'))
-});
+if (process.env.OPENSHIFT_NODEJS_IP)
+  app.listen(app.get('port'), process.env.OPENSHIFT_NODEJS_IP, function() {
+    console.log("Node app is running at localhost:" + app.get('port'))
+  })
+else
+  app.listen(app.get('port'), function() {
+    console.log("Node app is running at localhost:" + app.get('port'))
+  });
