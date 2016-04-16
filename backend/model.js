@@ -4,7 +4,9 @@ var mongoose = require('mongoose');
 var baucis = require('baucis');
 
 // Connect to the Mongo instance
-if (!process.env.MONGOLAB_URI)
+if (process.env.OPENSHIFT_MONGODB_DB_URL)
+  process.env.MONGOLAB_URI = process.env.OPENSHIFT_MONGODB_DB_URL + '/' + process.env.OPENSHIFT_APP_NAME;
+else if (!process.env.MONGOLAB_URI)
   if (process.env.MONGO_USER)
     process.env.MONGOLAB_URI = 'mongodb://' + process.env.MONGO_USER + ':' + process.env.MONGO_PASS + '@' + process.env.MONGO_HOST + ':' + process.env.MONGO_PORT + '/' + process.env.MONGO_DB;
   else
