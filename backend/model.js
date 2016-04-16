@@ -73,6 +73,14 @@ var Contacto = new mongoose.Schema({
   icon: String
 });
 
+var Consulta = new mongoose.Schema({
+  name: String,
+  email: String,
+  phone: String,
+  message: String,
+  number: Number
+});
+
 var Encargo = new mongoose.Schema({
   full_name: String,
   email: String,
@@ -85,6 +93,18 @@ var Encargo = new mongoose.Schema({
 var Pedido = new mongoose.Schema({
   name: String,
   nextSeqNumber: { type: Number, default: 100 }
+});
+
+Consulta.pre('save', function(next) {
+  var doc = this;
+  console.log('Una consulta fue guardada en Mongo: %s.', doc.get('email'));
+  mongoose.model('pedido').findOneAndUpdate({name: 'nush'}, { $inc: { nextSeqNumber: 1 } })
+    .exec()
+    .then((settings) => {
+      doc.number = settings.nextSeqNumber - 1;
+      next();
+    })
+    .catch(console.log);
 });
 
 Encargo.pre('save', function(next) {
@@ -145,6 +165,7 @@ mongoose.model('usuario', Usuario);
 mongoose.model('compra', Compra);
 mongoose.model('talle', Talle);
 mongoose.model('contacto', Contacto);
+mongoose.model('consulta', Consulta);
 var usuario = mongoose.model('usuario', Usuario);
 
 // Create a simple controller.  By default these HTTP methods
@@ -156,6 +177,7 @@ baucis.rest('encargo');
 baucis.rest('talle');
 baucis.rest('usuario');
 baucis.rest('compra');
+baucis.rest('consulta');
 
 // Export baucis and mongoose
 var exports = module.exports = {

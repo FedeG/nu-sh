@@ -41,6 +41,18 @@ app.get('/encargo/:number',function(req,res){
     .catch((err) => res.send(err));
 });
 
+app.get('/consulta/:number',function(req,res){
+  var number = parseInt(req.params.number);
+  mongoose.model('consulta').findOne({number: number})
+    .exec()
+    .then((consulta) => res.send(consulta))
+    .catch((err) => res.send(err));
+});
+
+app.get('/consulta',function(req,res){
+  res.sendFile(__dirname + '/templates/consulta.html');
+});
+
 app.get('/encargo',function(req,res){
   res.sendFile(__dirname + '/templates/encargo.html');
 });
@@ -55,6 +67,14 @@ app.post('/encargo', upload.array(), function (req, res, next) {
     })
     .then((encargo) => res.redirect('/encargo?number='+encargo.number))
     .catch((err) => res.sendFile(__dirname + '/templates/encargo.html'));
+});
+
+var upload2 = multer();
+app.post('/consulta', upload2.array(), function (req, res, next) {
+    var consulta = req.body;
+    mongoose.model('consulta').create(req.body)
+      .then((encargo) => res.send('ok'))
+      .catch((err) => res.send('error'))
 });
 
 app.listen(app.get('port'), function() {
